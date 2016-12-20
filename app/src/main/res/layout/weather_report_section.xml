@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--TODO may add cardView-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="70dp"
+    android:orientation="horizontal"
+    android:weightSum="10">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="6"
+        android:orientation="vertical"
+
+        android:minHeight="70dp">
+
+        <TextView
+            android:id="@+id/report_date"
+            style="@style/DefaultReportPadding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:textSize="15sp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:text="Tue 23.08.2016 - 02:00"
+            />
+        <TextView
+            android:id="@+id/report_condition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/DefaultReportPadding.ReportText"
+            android:text="Clear Sky"
+            />
+        <TextView
+            android:id="@+id/report_wind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            style="@style/DefaultReportPadding.ReportText"
+            android:text="Wind: 4.3 m"
+            />
+
+        <TextView
+            android:id="@+id/report_pressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/DefaultReportPadding.ReportText"
+            android:text="Pressure: 748"
+            />
+
+        <TextView
+            android:id="@+id/report_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/DefaultReportPadding.ReportText"
+            android:text="Humidity: 70 %"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"
+        android:orientation="vertical"
+        android:background="@android:color/holo_blue_dark"
+        android:minHeight="70dp">
+
+        <TextView
+            android:id="@+id/report_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:paddingLeft="15dp"
+            android:textSize="18sp"
+            android:text="22 \u2103"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

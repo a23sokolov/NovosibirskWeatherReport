@@ -2,8 +2,12 @@ package weatherapp.a23sokolov.com;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import retrofit2.Call;
@@ -12,56 +16,33 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 import weatherapp.a23sokolov.com.model.WeatherReport;
+import android.support.v7.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import weatherapp.a23sokolov.com.model.elements.Forecast;
+import weatherapp.a23sokolov.com.model.elements.Report;
 import weatherapp.a23sokolov.com.weatherapp.R;
 
 public class MainActivity extends AppCompatActivity implements Callback<WeatherReport>, View.OnClickListener {
 
-    final String xml = "<MMWEATHER>\n" +
-            "<REPORT type=\"frc3\">\n" +
-            "<TOWN index=\"29634\" sname=\"%CD%EE%E2%EE%F1%E8%E1%E8%F0%F1%EA\" latitude=\"55\" longitude=\"82\">\n" +
-            "<FORECAST day=\"19\" month=\"12\" year=\"2016\" hour=\"16\" tod=\"2\" predict=\"0\" weekday=\"2\">\n" +
-            "<PHENOMENA cloudiness=\"3\" precipitation=\"10\" rpower=\"0\" spower=\"0\"/>\n" +
-            "<PRESSURE max=\"751\" min=\"749\"/>\n" +
-            "<TEMPERATURE max=\"-16\" min=\"-14\"/>\n" +
-            "<WIND min=\"5\" max=\"7\" direction=\"4\"/>\n" +
-            "<RELWET max=\"76\" min=\"74\"/>\n" +
-            "<HEAT min=\"-22\" max=\"-20\"/>\n" +
-            "</FORECAST>\n" +
-            "<FORECAST day=\"19\" month=\"12\" year=\"2016\" hour=\"22\" tod=\"3\" predict=\"0\" weekday=\"2\">\n" +
-            "<PHENOMENA cloudiness=\"3\" precipitation=\"10\" rpower=\"0\" spower=\"0\"/>\n" +
-            "<PRESSURE max=\"750\" min=\"748\"/>\n" +
-            "<TEMPERATURE max=\"-14\" min=\"-12\"/>\n" +
-            "<WIND min=\"6\" max=\"8\" direction=\"4\"/>\n" +
-            "<RELWET max=\"78\" min=\"76\"/>\n" +
-            "<HEAT min=\"-20\" max=\"-18\"/>\n" +
-            "</FORECAST>\n" +
-            "<FORECAST day=\"20\" month=\"12\" year=\"2016\" hour=\"04\" tod=\"0\" predict=\"0\" weekday=\"3\">\n" +
-            "<PHENOMENA cloudiness=\"3\" precipitation=\"10\" rpower=\"0\" spower=\"0\"/>\n" +
-            "<PRESSURE max=\"751\" min=\"749\"/>\n" +
-            "<TEMPERATURE max=\"-13\" min=\"-11\"/>\n" +
-            "<WIND min=\"5\" max=\"7\" direction=\"4\"/>\n" +
-            "<RELWET max=\"77\" min=\"75\"/>\n" +
-            "<HEAT min=\"-19\" max=\"-17\"/>\n" +
-            "</FORECAST>\n" +
-            "<FORECAST day=\"20\" month=\"12\" year=\"2016\" hour=\"10\" tod=\"1\" predict=\"0\" weekday=\"3\">\n" +
-            "<PHENOMENA cloudiness=\"3\" precipitation=\"10\" rpower=\"0\" spower=\"0\"/>\n" +
-            "<PRESSURE max=\"753\" min=\"751\"/>\n" +
-            "<TEMPERATURE max=\"-13\" min=\"-11\"/>\n" +
-            "<WIND min=\"5\" max=\"7\" direction=\"4\"/>\n" +
-            "<RELWET max=\"78\" min=\"76\"/>\n" +
-            "<HEAT min=\"-19\" max=\"-17\"/>\n" +
-            "</FORECAST>\n" +
-            "</TOWN>\n" +
-            "</REPORT>\n" +
-            "</MMWEATHER>";
-
     Call<WeatherReport> call;
+
+    private RecyclerView mRecyclerView;
+    private SimpleRecyclerAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViewById(R.id.get_weather_btn).setOnClickListener(this);
+
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+        mAdapter = new SimpleRecyclerAdapter(new ArrayList<Forecast>());
+        mRecyclerView.setAdapter(mAdapter);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://informer.gismeteo.ru/")
@@ -81,9 +62,14 @@ public class MainActivity extends AppCompatActivity implements Callback<WeatherR
         super.onStop();
     }
 
+    public void updateRecyclerView(List<Forecast> forecasts) {
+        mAdapter.resetElements(forecasts);
+    }
+
     @Override
     public void onResponse(Call<WeatherReport> call, Response<WeatherReport> response) {
         Log.v("$$$$","response = " + response.body());
+        updateRecyclerView(response.body().getReport().getTown().getForecasts());
     }
 
     @Override
@@ -101,6 +87,57 @@ public class MainActivity extends AppCompatActivity implements Callback<WeatherR
 
                 call.enqueue(this);
                 break;
+        }
+    }
+
+    public class SimpleRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+        private List<Forecast> forecasts;
+
+        public SimpleRecyclerAdapter(final List<Forecast> forecastList) {
+            forecasts = forecastList;
+        }
+        @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.weather_report_section, parent, false);
+            return new ReportHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+            final ReportHolder reportHolder = (ReportHolder) holder;
+            final Forecast forecast = forecasts.get(position);
+            reportHolder.date.setText(forecast.getDate());
+        }
+
+        @Override
+        public int getItemCount() {
+            return forecasts.size();
+        }
+
+        public void resetElements(final List<Forecast> forecasts) {
+            if (forecasts != null) {
+                this.forecasts.clear();
+                this.forecasts.addAll(forecasts);
+            }
+            notifyDataSetChanged();
+        }
+
+        class ReportHolder extends RecyclerView.ViewHolder {
+            private TextView date;
+            private TextView condition;
+            private TextView wind;
+            private TextView pressure;
+            private TextView humidity;
+//            private ImageView icon;
+
+            public ReportHolder(View itemView) {
+                super(itemView);
+                date = (TextView) itemView.findViewById(R.id.report_date);
+                condition = (TextView) itemView.findViewById(R.id.report_condition);
+                wind = (TextView) itemView.findViewById(R.id.report_wind);
+                pressure = (TextView) itemView.findViewById(R.id.report_pressure);
+                humidity = (TextView) itemView.findViewById(R.id.report_humidity);
+            }
         }
     }
 }

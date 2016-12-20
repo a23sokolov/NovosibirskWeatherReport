@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">WeatherApp</string>
+    <string name="wind_list_report">Wind: %s m/s</string>
+    <string name="pressure_list_report">Pressure: %s hPa</string>
+    <string name="humidity_list_report">Humidity: %s %</string>
+    <string name="weather_celsius">%d\u2103</string>
 </resources>

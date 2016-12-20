@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Погода</string>
+    <string name="wind_list_report">Ветер: %s м/с</string>
+    <string name="pressure_list_report">Давление: %s мм.рт.ст</string>
+    <string name="humidity_list_report">Влажность: %s %</string>
+</resources>

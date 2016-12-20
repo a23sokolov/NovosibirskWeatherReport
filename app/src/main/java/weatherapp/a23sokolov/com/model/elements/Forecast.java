@@ -4,6 +4,10 @@ import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
+import java.util.Calendar;
+
+import weatherapp.a23sokolov.com.Utils;
+
 /**
  * Created by alexey on 19/12/16.
  */
@@ -17,6 +21,9 @@ public class Forecast {
 
     @Attribute
     private Integer year;
+
+    @Attribute
+    private Integer hour;
 
     @Attribute(name = "weekday")
     private Integer weekDay;
@@ -56,6 +63,16 @@ public class Forecast {
 
     public Wind getWind() {
         return wind;
+    }
+
+
+    public String getDate() {
+        final Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.DATE, day);
+        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        return Utils.formatDateTimeByPattern("EEE dd.MM.yyyy HH:mm", calendar.getTime());
     }
 
     @Override
