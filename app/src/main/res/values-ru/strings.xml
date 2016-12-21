@@ -2,6 +2,13 @@
 <resources>
     <string name="app_name">Погода</string>
     <string name="wind_list_report">Ветер: %s м/с</string>
-    <string name="pressure_list_report">Давление: %s мм.рт.ст</string>
-    <string name="humidity_list_report">Влажность: %s %</string>
+    <string name="pressure_list_report">Давление: %d мм.рт.ст</string>
+    <string name="humidity_list_report">Влажность: %d \u2103</string>
+    <string name="request_failed">Что-то пошло не так, мы уже работаем над этим.</string>
+    <string-array name="condition">
+        <item>Ясно</item>
+        <item>Малооблачно</item>
+        <item>Облачно</item>
+        <item>Пасмурно</item>
+    </string-array>
 </resources>

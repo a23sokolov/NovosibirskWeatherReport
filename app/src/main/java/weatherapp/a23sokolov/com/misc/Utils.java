@@ -1,14 +1,11 @@
-package weatherapp.a23sokolov.com;
+package weatherapp.a23sokolov.com.misc;
 
-import android.content.Context;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-
-import weatherapp.a23sokolov.com.weatherapp.R;
 
 /**
  * Created by alexey on 21/12/16.

@@ -17,6 +17,18 @@ public class Wind {
     @Attribute
     private Integer direction;
 
+    public Integer getMin() {
+        return min;
+    }
+
+    public Integer getMax() {
+        return max;
+    }
+
+    public Integer getDirection() {
+        return direction;
+    }
+
     @Override
     public String toString() {
         final StringBuilder strB = new StringBuilder("{");

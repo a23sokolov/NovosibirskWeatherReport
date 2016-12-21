@@ -1,4 +1,4 @@
-package weatherapp.a23sokolov.com;
+package weatherapp.a23sokolov.com.manager;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
