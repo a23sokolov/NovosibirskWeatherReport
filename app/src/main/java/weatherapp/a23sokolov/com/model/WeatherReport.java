@@ -24,6 +24,7 @@ public class WeatherReport {
         strB.append("report=").append(report).append("}");
         return strB.toString();
     }
+
 }
 
 

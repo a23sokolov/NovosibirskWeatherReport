@@ -55,6 +55,10 @@ public class Forecast {
         return year;
     }
 
+    public Integer getHour() {
+        return hour;
+    }
+
     public Integer getWeekDay() {
         return weekDay;
     }

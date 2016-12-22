@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Погода</string>
-    <string name="wind_list_report">Ветер: %s м/с</string>
+    <string name="wind_list_report" formatted="false">Ветер: %s%s %s м/с</string>
     <string name="pressure_list_report">Давление: %d мм.рт.ст</string>
     <string name="humidity_list_report">Влажность: %d \u2103</string>
+    <string name="request_success">Прогноз погоды обновился</string>
     <string name="request_failed">Что-то пошло не так, мы уже работаем над этим.</string>
-    <string-array name="condition">
-        <item>Ясно</item>
-        <item>Малооблачно</item>
-        <item>Облачно</item>
-        <item>Пасмурно</item>
-    </string-array>
+    <string name="click_download_btn">Для того, чтобы обновить погоду, кликни кнопку</string>
+
+    <!-- Condition -->
+    <string name="condition_clear_sky">Ясно</string>
+    <string name="condition_little_cloudy">Малооблачно</string>
+    <string name="condition_cloudy">Облачно</string>
+    <string name="condition_mainly_cloudy">Пасмурно</string>
+
+    <!-- Wind -->
+    <string name="wind_direction_north">С</string>
+    <string name="wind_direction_north_east">СВ</string>
+    <string name="wind_direction_east">В</string>
+    <string name="wind_direction_south_east">ЮВ</string>
+    <string name="wind_direction_south">Ю</string>
+    <string name="wind_direction_south_west">ЮЗ</string>
+    <string name="wind_direction_west">З</string>
+    <string name="wind_direction_north_west">СЗ</string>
 </resources>

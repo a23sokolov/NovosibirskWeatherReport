@@ -1,14 +1,34 @@
 <resources>
     <string name="app_name">WeatherApp</string>
-    <string name="wind_list_report">Wind: %s m/s</string>
+    <string name="wind_list_report" formatted="false">Wind: %s%s %s m/s</string>
     <string name="pressure_list_report">Pressure: %d hPa</string>
     <string name="humidity_list_report">Humidity: %d \u2103</string>
     <string name="weather_celsius">%d \u2103</string>
+    <string name="request_success">Weather forecast updated.</string>
     <string name="request_failed">Something go wrong, we are working on it.</string>
-    <string-array name="condition">
-        <item>Clear sky</item>
-        <item>Little cloudy</item>
-        <item>Cloudy</item>
-        <item>Mainly cloudy</item>
-    </string-array>
+    <string name="click_download_btn">To update weather info just click button</string>
+
+    <!-- Condition -->
+    <string name="condition_clear_sky">Clear sky</string>
+    <string name="condition_little_cloudy">Little cloudy</string>
+    <string name="condition_cloudy">Cloudy</string>
+    <string name="condition_mainly_cloudy">Mainly cloudy</string>
+
+    <!-- Wind -->
+    <string name="wind_direction_north">N</string>
+    <string name="wind_direction_north_east">NE</string>
+    <string name="wind_direction_east">E</string>
+    <string name="wind_direction_south_east">SE</string>
+    <string name="wind_direction_south">S</string>
+    <string name="wind_direction_south_west">SW</string>
+    <string name="wind_direction_west">W</string>
+    <string name="wind_direction_north_west">NW</string>
+
+    <!-- Weather Icon-->
+    <string name="weather_sunny" translatable="false">&#xf00d;</string>
+    <string name="weather_clear_night" translatable="false">&#xf02e;</string>
+    <string name="weather_cloudy" translatable="false">&#xf013;</string>
+    <string name="weather_rainy" translatable="false">&#xf019;</string>
+    <string name="weather_snowy" translatable="false">&#xf01b;</string>
+    <string name="weather_thunder" translatable="false">&#xf01e;</string>
 </resources>

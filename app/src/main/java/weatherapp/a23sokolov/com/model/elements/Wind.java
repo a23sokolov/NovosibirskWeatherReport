@@ -3,6 +3,8 @@ package weatherapp.a23sokolov.com.model.elements;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
+import weatherapp.a23sokolov.com.misc.Utils;
+
 /**
  * Created by alexey on 19/12/16.
  */
@@ -27,6 +29,10 @@ public class Wind {
 
     public Integer getDirection() {
         return direction;
+    }
+
+    public Utils.WindDirection getWindDirection() {
+        return Utils.WindDirection.values()[direction];
     }
 
     @Override

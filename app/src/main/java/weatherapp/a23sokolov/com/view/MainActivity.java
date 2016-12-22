@@ -1,5 +1,6 @@
 package weatherapp.a23sokolov.com.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,7 +16,7 @@ import weatherapp.a23sokolov.com.manager.WeatherReportManager;
 import weatherapp.a23sokolov.com.model.elements.Forecast;
 import weatherapp.a23sokolov.com.weatherapp.R;
 
-public class MainActivity extends AppCompatActivity implements WeatherReportManager.Listener, View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements WeatherReportManager.Listener, View.OnClickListener, SimpleRecyclerAdapter.OnViewHolderClickListener {
 
     private SimpleRecyclerAdapter mAdapter;
 
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements WeatherReportMana
         final RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mAdapter = new SimpleRecyclerAdapter(new ArrayList<Forecast>(), this);
+        mAdapter.setListener(this);
         mRecyclerView.setAdapter(mAdapter);
 
         WeatherReportManager weatherReportManager = app.getWeatherReportManager();
@@ -51,10 +53,18 @@ public class MainActivity extends AppCompatActivity implements WeatherReportMana
     @Override
     public void updateForecast(List<Forecast> forecasts) {
         mAdapter.resetElements(forecasts);
+//        Toast.makeText(this, this.getString(R.string.request_success), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void updateFailed() {
         Toast.makeText(this, this.getString(R.string.request_failed), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemClicked(int position) {
+        Intent intent = new Intent(this, ReportActivity.class);
+        intent.putExtra(ReportActivity.EXTRA_FORECAST_POSITION, position);
+        startActivity(intent);
     }
 }

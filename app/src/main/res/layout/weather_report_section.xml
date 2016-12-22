@@ -1,81 +1,101 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--TODO may add cardView-->
+<?xml version="1.0" encoding="utf-8"?><!--TODO may add cardView-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:minHeight="70dp"
-    android:orientation="horizontal"
-    android:weightSum="10">
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.CardView
+        android:id="@+id/report_card_root"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="6"
-        android:orientation="vertical"
+        android:layout_margin="5dp"
+        card_view:cardCornerRadius="6dp">
 
-        android:minHeight="70dp">
-
-        <TextView
-            android:id="@+id/report_date"
-            style="@style/DefaultReportPadding"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            android:textSize="15sp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:text="Tue 23.08.2016 - 02:00"
-            />
-        <TextView
-            android:id="@+id/report_condition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/DefaultReportPadding.ReportText"
-            android:text="Clear Sky"
-            />
-        <TextView
-            android:id="@+id/report_wind"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="10dp"
-            style="@style/DefaultReportPadding.ReportText"
-            android:text="Wind: 4.3 m"
-            />
+            android:minHeight="70dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
 
-        <TextView
-            android:id="@+id/report_pressure"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/DefaultReportPadding.ReportText"
-            android:text="Pressure: 748"
-            />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:minHeight="70dp"
 
-        <TextView
-            android:id="@+id/report_humidity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/DefaultReportPadding.ReportText"
-            android:text="Humidity: 70 %"
-            />
-    </LinearLayout>
+                android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="4"
-        android:orientation="vertical"
-        android:background="@android:color/holo_blue_dark"
-        android:minHeight="70dp">
+                <TextView
+                    android:id="@+id/report_date"
+                    style="@style/DefaultReportPadding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:text="Tue 23.08.2016 - 02:00"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textSize="15sp" />
 
-        <TextView
-            android:id="@+id/report_temperature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:paddingLeft="15dp"
-            android:textSize="18sp"
-            android:text="22 \u2103"
-            />
+                <TextView
+                    android:id="@+id/report_condition"
+                    style="@style/DefaultReportPadding.ReportText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Clear Sky" />
 
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/report_wind"
+                    style="@style/DefaultReportPadding.ReportText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:text="Wind: 4.3 m" />
+
+                <TextView
+                    android:id="@+id/report_pressure"
+                    style="@style/DefaultReportPadding.ReportText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pressure: 748" />
+
+                <TextView
+                    android:id="@+id/report_humidity"
+                    style="@style/DefaultReportPadding.ReportText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Humidity: 70 %" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:minHeight="70dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/report_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginTop="15dp"
+                    android:text="O"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="40sp" />
+
+                <TextView
+                    android:id="@+id/report_temperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"
+                    android:text="22 \u2103"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>
