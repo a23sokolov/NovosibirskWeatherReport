@@ -17,11 +17,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            android:parentActivityName="weatherapp.a23sokolov.com.view.ReportsActivity" >
         </activity>
-        <activity android:name="weatherapp.a23sokolov.com.view.ReportActivity"
-            android:parentActivityName="weatherapp.a23sokolov.com.view.MainActivity" >
-
-        </activity>
+        <activity
+            android:name="weatherapp.a23sokolov.com.view.ReportsActivity"
+            android:parentActivityName="weatherapp.a23sokolov.com.view.MainActivity"></activity>
     </application>
 
 </manifest>

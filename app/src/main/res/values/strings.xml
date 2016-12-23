@@ -7,6 +7,14 @@
     <string name="request_success">Weather forecast updated.</string>
     <string name="request_failed">Something go wrong, we are working on it.</string>
     <string name="click_download_btn">To update weather info just click button</string>
+    <string name="menu_clear_cache">Clear cache</string>
+    <string name="toast_cache_cleared">Cache cleared</string>
+    <string name="item_clicked">On item clicked position = %d</string>
+
+    <!-- Cities -->
+    <string name="city_1">Moscow</string>
+    <string name="city_2">Saint-Petersburg</string>
+    <string name="city_3">Novosibirsk</string>
 
     <!-- Condition -->
     <string name="condition_clear_sky">Clear sky</string>

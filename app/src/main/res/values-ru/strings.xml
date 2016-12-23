@@ -7,6 +7,14 @@
     <string name="request_success">Прогноз погоды обновился</string>
     <string name="request_failed">Что-то пошло не так, мы уже работаем над этим.</string>
     <string name="click_download_btn">Для того, чтобы обновить погоду, кликни кнопку</string>
+    <string name="menu_clear_cache">Почистить кэш</string>
+    <string name="toast_cache_cleared">Кэш почищен</string>
+    <string name="item_clicked">Вы кликнули на позицию = %d</string>
+
+    <!-- Cities -->
+    <string name="city_1">Москва</string>
+    <string name="city_2">Санкт-Петербург</string>
+    <string name="city_3">Новосибирск</string>
 
     <!-- Condition -->
     <string name="condition_clear_sky">Ясно</string>
