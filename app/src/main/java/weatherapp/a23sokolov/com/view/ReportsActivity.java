@@ -47,9 +47,13 @@ public class ReportsActivity extends BaseActivity implements WeatherReportManage
         mRecyclerView.setAdapter(mAdapter);
 
         WeatherReportManager weatherReportManager = app.getWeatherReportManager();
-
         mAdapter.resetElements(weatherReportManager.getForecastList(cityPosition));
-        weatherReportManager.setListener(this, cityPosition);
+    }
+
+    @Override
+    protected void onStart() {
+        app.getWeatherReportManager().setListener(this, cityPosition);
+        super.onStart();
     }
 
     @Override
