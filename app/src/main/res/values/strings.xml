@@ -4,7 +4,7 @@
     <string name="pressure_list_report">Pressure: %d hPa</string>
     <string name="humidity_list_report">Humidity: %d \u2103</string>
     <string name="weather_celsius">%d \u2103</string>
-    <string name="request_success">Weather forecast updated.</string>
+    <string name="request_success">Weather forecast is updated.</string>
     <string name="request_failed">Something go wrong, we are working on it.</string>
     <string name="click_download_btn">To update weather info just click button</string>
     <string name="menu_clear_cache">Clear cache</string>
